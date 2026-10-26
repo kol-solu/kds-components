@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="auto">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KDS Components — a terminal-inspired components library</title>
+    <link rel="stylesheet" href="src/style.css">
+    <meta name="description" content="A terminal-inspired mega menu built on the KOLINN Design System with Nord tokens, Fira typefaces, and 8px rhythm.">
+</head>
+<body>
+    <!-- Site Loading Animation Overlay -->
+    <div class="site-loader" id="siteLoader" aria-hidden="true">
+        <div class="loader-content">
+            <div class="loader-terminal-prompt">
+                <span class="prompt-symbol">>_</span>
+                <span class="prompt-text">INITIALIZING KDS SYSTEM...</span>
+            </div>
+            <div class="loader-bar-track">
+                <div class="loader-bar-fill" id="loaderBarFill"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Skip link for keyboard users -->
+    <a href="#main" class="skip-link" id="skip-link">Skip to main content</a>
+
+    <!-- Live region for screen reader announcements -->
+    <div id="nav-status" class="sr-only" aria-live="polite" aria-atomic="true"></div>
+
+    <!-- HEADER / NAVIGATION -->
+    <header class="global-nav" id="globalNav" role="banner">
+        <div class="container nav-content">
+            <!-- Logo -->
+            <a href="#" class="logo" aria-label="KOLINN home">
+                <span class="logo-prompt" aria-hidden="true">>_</span>
+                <span>KOLINN</span>
+            </a>
+
+            <!-- Desktop Navigation -->
+            <nav aria-label="Main navigation">
+                <ul class="desktop-nav">
+                    <li class="nav-item">
+                        <button class="nav-link" data-target="panel-overview" 
+                                aria-expanded="false" 
+                                aria-controls="panel-overview"
+                                aria-haspopup="true">
+                            Overview
+                        </button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-link" data-target="panel-components"
+                                aria-expanded="false"
+                                aria-controls="panel-components"
+                                aria-haspopup="true">
+                            Components
+                        </button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-link" data-target="panel-patterns"
+                                aria-expanded="false"
+                                aria-controls="panel-patterns"
+                                aria-haspopup="true">
+                            Patterns
+                        </button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-link" data-target="panel-documentation"
+                                aria-expanded="false"
+                                aria-controls="panel-documentation"
+                                aria-haspopup="true">
+                            Documentation
+                        </button>
+                    </li>
+                </ul>
+            </nav>
+
+            <!-- Nav Actions -->
+            <div class="nav-actions">
+                <!-- Search Toggle (Desktop) -->
+                <button class="icon-btn search-toggle" data-target="panel-search"
+                        aria-expanded="false"
+                        aria-controls="panel-search"
+                        aria-label="Open search">
+                    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="8"/>
+                        <path d="M21 21l-4.35-4.35"/>
+                    </svg>
+                </button>
+
+                <!-- Theme Toggle -->
+                <button class="icon-btn" id="themeToggle" aria-label="Switch to light theme">
+                    <svg class="icon-auto" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="2" y="3" width="20" height="14" rx="2"/>
+                        <path d="M8 21h8M12 17v4"/>
+                    </svg>
+                    <svg class="icon-sun" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="5"/>
+                        <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+                    </svg>
+                    <svg class="icon-moon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                    </svg>
+                </button>
+
+                <!-- CTA Button (Desktop) -->
+                <a href="#" class="btn btn-primary nav-cta">Get started</a>
+
+                <!-- Mobile Menu Toggle -->
+                <button class="hamburger" id="mobileMenuToggle" 
+                        aria-expanded="false" 
+                        aria-controls="mobileMenu"
+                        aria-label="Open menu">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mega Menu Container -->
+        <div class="mega-menu-container" id="megaMenuContainer" 
+             role="region" aria-label="Navigation menu" 
+             aria-hidden="true" inert>
+            
+            <!-- Overview Panel -->
+            <div class="mega-panel" id="panel-overview" role="menu">
+                <div class="container">
+                    <div class="panel-grid cols-3">
+                        <div class="panel-column">
+                            <h3>Quick links</h3>
+                            <ul>
+                                <li><a href="#">Color tokens</a></li>
+                                <li><a href="#">Typography ladder</a></li>
+                                <li><a href="#">Spacing & layout</a></li>
+                                <li><a href="#">Inspector commands</a></li>
+                            </ul>
+                        </div>
+                        <div class="panel-column">
+                            <h3>Core principles</h3>
+                            <ul>
+                                <li><a href="#">01 · Terminal at heart</a></li>
+                                <li><a href="#">02 · Rich, not noisy</a></li>
+                                <li><a href="#">03 · Legibility first</a></li>
+                                <li><a href="#">04 · Responsive by default</a></li>
+                            </ul>
+                        </div>
+                        <div class="panel-column">
+                            <h3>System</h3>
+                            <ul>
+                                <li><a href="#">Manifest & configuration</a></li>
+                                <li><a href="#">Inspector commands</a></li>
+                                <li><a href="#">Changelog — v1.0.0</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Components Panel -->
+            <div class="mega-panel" id="panel-components" role="menu">
+                <div class="container">
+                    <div class="panel-grid cols-3">
+                        <div class="panel-column">
+                            <h3>Inputs & controls</h3>
+                            <ul>
+                                <li><a href="#">Buttons & triggers</a></li>
+                                <li><a href="#">Text controls & fields</a></li>
+                                <li><a href="#">Selection controls</a></li>
+                                <li><a href="#">Interactive command field</a></li>
+                            </ul>
+                        </div>
+                        <div class="panel-column">
+                            <h3>Navigation & wayfinding</h3>
+                            <ul>
+                                <li><a href="#">Structural header</a></li>
+                                <li><a href="#">Tabs & breadcrumbs</a></li>
+                                <li><a href="#">Pagination & table controls</a></li>
+                            </ul>
+                        </div>
+                        <div class="panel-column">
+                            <h3>Feedback & data</h3>
+                            <ul>
+                                <li><a href="#">Tags, badges & indicators</a></li>
+                                <li><a href="#">Alerts & status banners</a></li>
+                                <li><a href="#">Overlays & tooltips</a></li>
+                                <li><a href="#">Data tables</a></li>
+                                <li><a href="#">Skeleton loaders</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Patterns Panel -->
+            <div class="mega-panel" id="panel-patterns" role="menu">
+                <div class="container">
+                    <div class="panel-grid cols-2">
+                        <div class="panel-column">
+                            <h3>Workflows</h3>
+                            <ul>
+                                <li><a href="#">Operations overview</a></li>
+                                <li><a href="#">Command → progress → result</a></li>
+                                <li><a href="#">Progressive configuration</a></li>
+                            </ul>
+                        </div>
+                        <div class="panel-column">
+                            <h3>Composition</h3>
+                            <ul>
+                                <li><a href="#">Three-up content discovery</a></li>
+                                <li><a href="#">Theme parity</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Documentation Panel -->
+            <div class="mega-panel" id="panel-documentation" role="menu">
+                <div class="container">
+                    <div class="panel-grid cols-3">
+                        <div class="panel-column">
+                            <h3>Specifications</h3>
+                            <ul>
+                                <li><a href="#">01 · Overview & principles</a></li>
+                                <li><a href="#">02 · Color tokens</a></li>
+                                <li><a href="#">03 · Typography</a></li>
+                                <li><a href="#">04 · Spacing & layout</a></li>
+                            </ul>
+                        </div>
+                        <div class="panel-column">
+                            <h3>Reference</h3>
+                            <ul>
+                                <li><a href="#">05 · Elements & components</a></li>
+                                <li><a href="#">06 · Patterns & usage</a></li>
+                                <li><a href="#">07 · System manifest</a></li>
+                            </ul>
+                        </div>
+                        <div class="panel-column">
+                            <h3>Get started</h3>
+                            <ul>
+                                <li><a href="#">Installation guide</a></li>
+                                <li><a href="#">Quick start tutorial</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Search Panel -->
+            <div class="mega-panel" id="panel-search" role="search" aria-label="Site search">
+                <div class="container">
+                    <div class="search-container">
+                        <div class="search-field">
+                            <span class="search-prompt" aria-hidden="true">$</span>
+                            <input type="search" id="desktopSearchInput" 
+                                   class="search-input" 
+                                   placeholder="type to search"
+                                   aria-label="Search documentation"
+                                   autocomplete="off">
+                        </div>
+                        <p class="search-helper">type to search · esc to dismiss</p>
+                        
+                        <div class="search-suggestions">
+                            <h3>Quick links</h3>
+                            <ul>
+                                <li><a href="#">Color tokens</a></li>
+                                <li><a href="#">Typography ladder</a></li>
+                                <li><a href="#">Spacing & layout</a></li>
+                                <li><a href="#">Inspector commands</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Frosted curtain for desktop mega menu -->
+    <div class="menu-curtain" id="menuCurtain" aria-hidden="true"></div>
+
+    <!-- MAIN CONTENT -->
+    <main id="main" tabindex="-1">
+        <!-- Hero Section -->
+        <section class="hero" aria-labelledby="hero-title">
+            <div class="container">
+                <p class="hero-command reveal-stagger" style="--stagger-index: 1;">/. kds init <span class="logo-cursor" aria-hidden="true">█</span></p>
+                <h1 id="hero-title" class="reveal-stagger" style="--stagger-index: 2;">
+                    <span class="shimmer-text">KDS Components</span>
+                </h1>
+                <p class="hero-copy reveal-stagger" style="--stagger-index: 3;">
+                    A terminal-inspired components library built on the Kolinn Design System: 
+                    Nord Theme, Fira Typefaces, Spatial Spacing, and Fluid Responsive UI.
+                </p>
+                <div class="divider reveal-stagger" style="--stagger-index: 4;" aria-hidden="true">---</div>
+                <p class="credit reveal-stagger" style="--stagger-index: 5;">
+                    by <a href="https://kolinn.dev" class="shimmer-text">KOLINN</a>
+                </p>
+            </div>
+        </section>
+
+        <!-- Architecture Section -->
+        <section class="featured-section" aria-labelledby="featured-title">
+            <div class="container">
+                <h2 id="featured-title" class="featured-header reveal-stagger" style="--stagger-index: 6;">Uncompromised</h2>
+                <div class="featured-grid">
+                    <article class="featured-card reveal-stagger" style="--stagger-index: 7;">
+                        <h3>
+                            <span class="card-index">01</span>
+                            Performance
+                        </h3>
+                        <p>
+                            Zero dependencies. State is class-driven with exactly one layout read per interaction, 
+                            a <code>ResizeObserver</code> keeps the flyout height truthful, and item animations 
+                            stick to <code>transform</code> and <code>opacity</code> for a consistent 60fps.
+                        </p>
+                    </article>
+                    <article class="featured-card reveal-stagger" style="--stagger-index: 8;">
+                        <h3>
+                            <span class="card-index">02</span>
+                            Accessibility
+                        </h3>
+                        <p>
+                            Nord pairs re-tested for AA, <code>inert</code>-based focus containment, honest ARIA state 
+                            (<code>aria-expanded</code> / <code>aria-controls</code>), <code>:focus-visible</code> detection, 
+                            Escape with focus restoration, a skip link, and full <code>prefers-reduced-motion</code> respect.
+                        </p>
+                    </article>
+                    <article class="featured-card reveal-stagger" style="--stagger-index: 9;">
+                        <h3>
+                            <span class="card-index">03</span>
+                            Design engineering
+                        </h3>
+                        <p>
+                            Token-first: Nord primitives resolve through semantic roles, Fira Code prompts and 
+                            Fira Sans prose sit on an 8px rhythm, and a frosted full-screen curtain spotlights 
+                            the open flyout.
+                        </p>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- MOBILE MENU -->
+    <div class="mobile-menu" id="mobileMenu" 
+         aria-hidden="true" inert
+         role="dialog" aria-modal="true" aria-label="Mobile navigation">
+        <div class="mobile-menu-content" id="mobileMenuContent">
+            <!-- Mobile Search -->
+            <div class="container">
+                <div class="mobile-search-field search-field">
+                    <span class="search-prompt" aria-hidden="true">$</span>
+                    <input type="search" id="mobileSearchInput" 
+                           class="search-input" 
+                           placeholder="type to search"
+                           aria-label="Search documentation"
+                           autocomplete="off">
+                </div>
+
+                <!-- Accordion Navigation -->
+                <nav aria-label="Mobile navigation">
+                    <div class="mobile-accordion">
+                        <button class="mobile-accordion-header" aria-expanded="false">
+                            <span>Overview</span>
+                            <svg class="chevron" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="6 9 12 15 18 9"/>
+                            </svg>
+                        </button>
+                        <div class="mobile-accordion-content">
+                            <div class="mobile-accordion-inner">
+                                <ul>
+                                    <li><a href="#">01 · Terminal at heart</a></li>
+                                    <li><a href="#">02 · Rich, not noisy</a></li>
+                                    <li><a href="#">03 · Legibility first</a></li>
+                                    <li><a href="#">04 · Responsive by default</a></li>
+                                    <li><a href="#">Manifest & configuration</a></li>
+                                    <li><a href="#">Inspector commands</a></li>
+                                    <li><a href="#">Changelog — v1.0.0</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mobile-accordion">
+                        <button class="mobile-accordion-header" aria-expanded="false">
+                            <span>Components</span>
+                            <svg class="chevron" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="6 9 12 15 18 9"/>
+                            </svg>
+                        </button>
+                        <div class="mobile-accordion-content">
+                            <div class="mobile-accordion-inner">
+                                <ul>
+                                    <li><a href="#">Buttons & triggers</a></li>
+                                    <li><a href="#">Text controls & fields</a></li>
+                                    <li><a href="#">Selection controls</a></li>
+                                    <li><a href="#">Interactive command field</a></li>
+                                    <li><a href="#">Structural header</a></li>
+                                    <li><a href="#">Tabs & breadcrumbs</a></li>
+                                    <li><a href="#">Pagination & table controls</a></li>
+                                    <li><a href="#">Tags, badges & indicators</a></li>
+                                    <li><a href="#">Alerts & status banners</a></li>
+                                    <li><a href="#">Overlays & tooltips</a></li>
+                                    <li><a href="#">Data tables</a></li>
+                                    <li><a href="#">Skeleton loaders</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mobile-accordion">
+                        <button class="mobile-accordion-header" aria-expanded="false">
+                            <span>Patterns</span>
+                            <svg class="chevron" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="6 9 12 15 18 9"/>
+                            </svg>
+                        </button>
+                        <div class="mobile-accordion-content">
+                            <div class="mobile-accordion-inner">
+                                <ul>
+                                    <li><a href="#">Operations overview</a></li>
+                                    <li><a href="#">Command → progress → result</a></li>
+                                    <li><a href="#">Progressive configuration</a></li>
+                                    <li><a href="#">Three-up content discovery</a></li>
+                                    <li><a href="#">Theme parity</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mobile-accordion">
+                        <button class="mobile-accordion-header" aria-expanded="false">
+                            <span>Documentation</span>
+                            <svg class="chevron" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="6 9 12 15 18 9"/>
+                            </svg>
+                        </button>
+                        <div class="mobile-accordion-content">
+                            <div class="mobile-accordion-inner">
+                                <ul>
+                                    <li><a href="#">01 · Overview & principles</a></li>
+                                    <li><a href="#">02 · Color tokens</a></li>
+                                    <li><a href="#">03 · Typography</a></li>
+                                    <li><a href="#">04 · Spacing & layout</a></li>
+                                    <li><a href="#">05 · Elements & components</a></li>
+                                    <li><a href="#">06 · Patterns & usage</a></li>
+                                    <li><a href="#">07 · System manifest</a></li>
+                                    <li><a href="#">Get started</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+
+                <!-- Mobile CTA -->
+                <a href="#" class="btn btn-primary mobile-cta">Get started</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="site-footer" role="contentinfo">
+        <div class="container footer-inner">
+            <div class="footer-brand">
+                <span aria-hidden="true">>_</span>
+                <span>KOLINN</span>
+            </div>
+            <nav aria-label="Footer navigation">
+                <ul class="footer-links">
+                    <li><a href="#">Overview</a></li>
+                    <li><a href="#">Components</a></li>
+                    <li><a href="#">Patterns</a></li>
+                    <li><a href="#">Documentation</a></li>
+                </ul>
+            </nav>
+            <div class="footer-meta">
+                <span>version v1.2</span>
+                <span aria-hidden="true">·</span>
+                <span>updated 2026-10-27</span>
+                <span aria-hidden="true">·</span>
+                <span>stable</span>
+            </div>
+        </div>
+    </footer>
+
+    <script src="src/script.js" defer></script>
+</body>
+</html>
